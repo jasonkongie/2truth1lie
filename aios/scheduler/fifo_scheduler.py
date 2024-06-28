@@ -12,6 +12,8 @@ class FIFOScheduler(BaseScheduler):
         super().__init__(llm, log_mode)
         self.agent_process_queue = Queue()
 
+    def set_llm(self, llm):
+        self.llm = llm
 
     def run(self):
         while self.active:
@@ -33,3 +35,5 @@ class FIFOScheduler(BaseScheduler):
         self.llm.address_request(
             agent_process=agent_process
         )
+
+
